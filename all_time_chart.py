@@ -14,7 +14,7 @@ try:
     plt.plot(dates, all_time_minutes)
 
     plt.xlabel("Date")
-    plt.ylabel("Excercise Minutes")
+    plt.ylabel("Exercise Minutes")
     plt.title("All Time Data")
 
     plt.savefig('all_time_chart.png')

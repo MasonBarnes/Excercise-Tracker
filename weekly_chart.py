@@ -20,7 +20,7 @@ try:
     plt.plot(dates, weekly_minutes)
 
     plt.xlabel("Date")
-    plt.ylabel("Excercise Minutes")
+    plt.ylabel("Exercise Minutes")
     plt.title("Weekly Data")
 
     plt.savefig('weekly_chart.png')
