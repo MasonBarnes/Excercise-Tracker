@@ -9,7 +9,7 @@ Created on Tue Jan 26 17:23:33 2021
 import os
 import platform
 import flask
-import webbroswer
+import webbrowser
 from datetime import datetime
 app = flask.Flask(__name__)
 
