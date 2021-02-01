@@ -55,7 +55,42 @@ def home():
         data2 = "Average All Time High: " + str(average(all_time_minutes))
     except:
         data2 = "Average All Time Minutes: NOT AVAILABLE"
-    with open("web/index.html") as f: return f.read().replace("DATA1", data1).replace("DATA2", data2)
+    return """<!DOCTYPE html>
+<html>
+<head>
+	<title>Exercise Tracker</title>
+	<style>
+		body {
+			font-family: sans-serif;
+		}
+	</style>
+	<script>
+		function httpGet(theUrl) {
+		    var xmlHttp = new XMLHttpRequest();
+		    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+		    xmlHttp.send( null );
+		    return xmlHttp.responseText;
+		}
+		function add_data() {
+			date = prompt("Date in MM/DD/YY format (leave empty for today):");
+			mins = prompt("Exercise minutes:");
+			window.location.replace("http://localhost:7634/add-data?mins=" + mins + "&date=" + date);
+		}
+	</script>
+</head>
+<body>
+	<center>
+		<h1>Exercise Tracker</h1>
+		<button onclick="add_data();">Add Data</button>
+		<br><br><br>
+		<img src="http://localhost:7634/all-time-plot">
+		<img src="http://localhost:7634/weekly-plot">
+		<br>
+		<h3>DATA1</h3>
+		<h3>DATA2</h3>
+	</center>
+</body>
+</html>""".replace("DATA1", data1).replace("DATA2", data2)
 
 @app.route("/add-data", methods=['GET'])
 def add_data():
